@@ -1,6 +1,6 @@
 # wallenode-docker
 wallenode-docker  
-walle-web 包含nodejs,webpack的打包镜像
+walle-web 包含nodejs,npm的打包镜像
 
 
 #### 使用方法

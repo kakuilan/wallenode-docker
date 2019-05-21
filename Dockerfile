@@ -62,13 +62,15 @@ RUN set -ex \
   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc" \
   && gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
-  && mkdir -p /opt \
   && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
+  && ln -sf /usr/local/bin/node /usr/bin/node \
   && npm install -g cnpm --registry=https://registry.npm.taobao.org  \
+  && npm install --unsafe-perm=true --allow-root -g chromedriver \
   && npm config set prefix ${NODEMODULE_DIR}/npm-global --global  \
-  && npm config set cache ${NODEMODULE_DIR}/npm-cache --global
+  && npm config set cache ${NODEMODULE_DIR}/npm-cache --global \
+  && npm config set scripts-prepend-node-path true
 
 ENV PATH "$PATH:${NODE_PATH}"
