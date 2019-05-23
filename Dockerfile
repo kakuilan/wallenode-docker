@@ -69,7 +69,6 @@ RUN set -ex \
   && ln -sf /usr/local/bin/node /usr/bin/node \
   && npm install -g cnpm --registry=https://registry.npm.taobao.org  \
   && npm install --unsafe-perm=true --allow-root -g chromedriver \
-  && npm install --unsafe-perm=true --allow-root -g webpack webpack-cli \
   && npm config set prefix ${NODEMODULE_DIR}/npm-global --global  \
   && npm config set cache ${NODEMODULE_DIR}/npm-cache --global \
   && npm config set scripts-prepend-node-path true --global
