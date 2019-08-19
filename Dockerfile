@@ -70,6 +70,8 @@ RUN set -ex \
   #&& npm install -g cnpm --registry=https://registry.npm.taobao.org  \
   #&& npm install --unsafe-perm=true --allow-root -g chromedriver \
   #&& npm config set scripts-prepend-node-path true --global \
+  #升级npm到最新
+  && npm install -g npm \
   && npm config set prefix ${NODEMODULE_DIR}/npm_global --global  \
   && npm config set cache ${NODEMODULE_DIR}/npm_cache --global
 
