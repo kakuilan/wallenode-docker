@@ -16,9 +16,9 @@ sudo docker pull kakuilan/wallenode-docker:latest
 
 #### nodejs版本
 - node  10.16.3
-- npm   6.4.1
+- npm   6.9.0
 - yarn  1.17.0
-- npx   6.4.1
+- npx   6.9.0
 
 #### 挂载目录
 - /opt/walle_home/codebase
