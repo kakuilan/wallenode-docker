@@ -26,3 +26,6 @@ sudo docker pull kakuilan/wallenode-docker:latest
 - /opt/walle_home/node_module/npm_cache
 - /opt/walle_home/node_module/npm_global
 - /opt/walle_home/plugins
+
+#### 注意
+- 编译打包请使用yarn,弃用npm
