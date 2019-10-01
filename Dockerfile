@@ -6,7 +6,7 @@ USER root
 
 # dir and version
 ENV NODE_VERSION=10.16.3 \
-    YARN_VERSION=1.17.0 \
+    YARN_VERSION=1.19.0 \
     NODE_PATH=/usr/local/bin\
     NODEMODULE_DIR=/opt/walle_home/node_module
 
