@@ -5,8 +5,8 @@ MAINTAINER kakuilan kakuilan@163.com
 USER root
 
 # dir and version
-ENV NODE_VERSION=10.16.3 \
-    YARN_VERSION=1.19.0 \
+ENV NODE_VERSION=12.14.1 \
+    YARN_VERSION=1.22.0 \
     NODE_PATH=/usr/local/bin\
     NODEMODULE_DIR=/opt/walle_home/node_module
 
