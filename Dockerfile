@@ -5,16 +5,18 @@ MAINTAINER kakuilan kakuilan@163.com
 USER root
 
 # dir and version
-ENV NODE_VERSION=12.14.1 \
+ENV NODE_VERSION=12.16.1 \
     YARN_VERSION=1.22.0 \
     NODE_PATH=/usr/local/bin\
     NODEMODULE_DIR=/opt/walle_home/node_module
 
+# add user
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node \
-  && mkdir -p ${NODEMODULE_DIR}/npm_global ${NODEMODULE_DIR}/npm_cache
+  && mkdir -p ${NODEMODULE_DIR}/npm_global ${NODEMODULE_DIR}/npm_cache \
 
-RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+# install nodejs
+  && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
     ppc64el) ARCH='ppc64le';; \
@@ -49,9 +51,10 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
-  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
 
-RUN set -ex \
+# install yarn
+  && set -ex \
   && for key in \
     6A010C5166006599AA17F08146C2130DFD2497F5 \
   ; do \
@@ -67,11 +70,6 @@ RUN set -ex \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
   && ln -sf /usr/local/bin/node /usr/bin/node \
-  #&& npm install -g cnpm --registry=https://registry.npm.taobao.org  \
-  #&& npm install --unsafe-perm=true --allow-root -g chromedriver \
-  #&& npm config set scripts-prepend-node-path true --global \
-  #升级npm到最新
-  && npm install -g npm \
   && npm config set prefix ${NODEMODULE_DIR}/npm_global --global  \
   && npm config set cache ${NODEMODULE_DIR}/npm_cache --global
 
