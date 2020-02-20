@@ -12,13 +12,17 @@ sudo docker build -t myimg .
 
 #拉取网络镜像
 sudo docker pull kakuilan/wallenode-docker:latest
+sudo docker run --rm -it kakuilan/wallenode-docker:latest node -v
+sudo docker run --rm -it kakuilan/wallenode-docker:latest npm -v
+sudo docker run --rm -it kakuilan/wallenode-docker:latest npx -v
+sudo docker run --rm -it kakuilan/wallenode-docker:latest yarn -v
 ```
 
 #### nodejs版本
-- node  12.14.1
+- node  12.16.1
 - npm   6.13.4
-- yarn  1.22.0
 - npx   6.13.4
+- yarn  1.22.0
 
 #### 挂载目录
 - /opt/walle_home/codebase
