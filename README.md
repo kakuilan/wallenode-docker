@@ -19,10 +19,10 @@ sudo docker run --rm -it kakuilan/wallenode-docker:latest yarn -v
 ```
 
 #### nodejs版本
-- node  12.16.1
-- npm   6.13.4
-- npx   6.13.4
-- yarn  1.22.0
+- node  12.19.0
+- npm   6.14.8
+- npx   6.14.8
+- yarn  1.22.5
 
 #### 挂载目录
 - /opt/walle_home/codebase
