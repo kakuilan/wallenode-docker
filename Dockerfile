@@ -13,7 +13,7 @@ ENV NODE_VERSION=12.19.0 \
 # add user
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node \
-  && mkdir -p ${NODEMODULE_DIR}/npm_global ${NODEMODULE_DIR}/npm_cache \
+  && mkdir -p ${NODEMODULE_DIR}/npm_cache ${NODEMODULE_DIR}/yarn_cache \
 
 # install nodejs
   && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
@@ -70,7 +70,7 @@ RUN groupadd --gid 1000 node \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
   && ln -sf /usr/local/bin/node /usr/bin/node \
-  && npm config set prefix ${NODEMODULE_DIR}/npm_global --global  \
-  && npm config set cache ${NODEMODULE_DIR}/npm_cache --global
+  && npm config set cache ${NODEMODULE_DIR}/npm_cache --global \
+  && yarn config set cache-folder ${NODEMODULE_DIR}/yarn_cache
 
 ENV PATH "$PATH:${NODE_PATH}"
