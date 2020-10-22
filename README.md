@@ -28,7 +28,7 @@ sudo docker run --rm -it kakuilan/wallenode-docker:latest yarn -v
 - /opt/walle_home/codebase
 - /opt/walle_home/logs
 - /opt/walle_home/node_module/npm_cache
-- /opt/walle_home/node_module/npm_global
+- /opt/walle_home/node_module/yarn_cache
 - /opt/walle_home/plugins
 
 #### 注意
